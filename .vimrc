@@ -1,13 +1,13 @@
-if empty(glob('~/.vim/colors/jellybeans.vim'))
-silent !curl -fLo ~/.vim/colors/jellybeans.vim --create-dirs
-    \ https://raw.githubusercontent.com/nanotech/jellybeans.vim/master/colors/jellybeans.vim
-source $MYVIMRC
+if empty(glob('~/.vim/colors/jellybeans.vim')) && executable('curl')
+    silent !curl -fLo ~/.vim/colors/jellybeans.vim --create-dirs \
+        https://raw.githubusercontent.com/nanotech/jellybeans.vim/master/colors/jellybeans.vim
+    source $MYVIMRC
 endif
 
-if empty(glob('~/.vim/autoload/plug.vim'))
-silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-autocmd VimEnter * PlugInstall --sync | source $MYVIMRC | qa
+if empty(glob('~/.vim/autoload/plug.vim')) && executable('curl')
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC | qa
 endif
 
 call plug#begin('~/.vim/plugged')
